@@ -3,12 +3,11 @@
 
 .button-wrapper {
   @include flexbox;
-  @include flex(1, 1);
+  @include flex(1, 1, 33.333%);
   width: 100%;
 }
 
 .btn {
-  padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
