@@ -1,0 +1,38 @@
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.yarnrc.yml
+.yarn.lock
+
+# npm
+node_modules/
+.npmrc
+
+# IDE settings
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Build output
+dist/
+/./build/
+
+# OS-specific files
+Thumbs.db
+.DS_Store
+
+# Parcel-bundler cache (if used)
+.cache/
+
+# TypeScript specific
+*.tsbuildinfo
+
+# Other
+.pnp.*
