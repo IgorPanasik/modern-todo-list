@@ -1,0 +1,109 @@
+@use "@/styles/mixins/_main" as *;
+
+.footer {
+  overflow: hidden;
+
+  &__content {
+    @include flexbox;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__logo {
+    @include flexbox;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.8rem;
+
+    i {
+      color: var(--color-link);
+      padding: 5px;
+    }
+  }
+
+  &__nav {
+    @include flexbox;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    width: 100%;
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  &__copyright {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    opacity: 0.8;
+
+    @include breakpoint-down("xs") {
+      font-size: 16px;
+    }
+
+    a {
+      color: var(--color-link);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // For Skeleton
+  &__content-skeleton {
+    @include flexbox;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__skeleton-wrapper {
+    @include flexbox;
+    gap: 1rem;
+  }
+
+  &__logo-skeleton {
+    width: 27px;
+    height: 30px;
+  }
+
+  &__text-skeleton {
+    width: 105px;
+    height: 36px;
+  }
+
+  &__list-skeleton {
+    @include flexbox;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  &__nav-skeleton {
+    width: 41px;
+    height: 41px;
+  }
+
+  &__copyright-skeleton {
+    @include flexbox;
+    gap: 1rem;
+
+    @include breakpoint-down("xs") {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__data-skeleton {
+    width: 125px;
+    height: 20px;
+  }
+
+  &__author-skeleton {
+    width: 125px;
+    height: 20px;
+  }
+}

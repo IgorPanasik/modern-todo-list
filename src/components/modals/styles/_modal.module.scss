@@ -1,0 +1,181 @@
+@use "@/styles/_variables";
+@use "@/styles/mixins/_main" as *;
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  @include flexbox;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  @include transition(all 0.3s ease);
+
+  &--open {
+    z-index: 1000;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #00000080;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+
+  &__content {
+    position: relative;
+    @include flexbox;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--background-muted);
+    border-radius: 12px;
+    padding: 24px;
+    width: clamp(280px, 650px, 80%);
+    height: clamp(200px, 250px, 80%);
+    box-shadow: 0 4px 12px #00000026;
+    @include transform(translateY(-20px));
+    @include transition(transform 0.3s ease);
+
+    @include breakpoint-down("sm") {
+      height: clamp(200px, 250px, 60%);
+    }
+
+    @include breakpoint-down("smx") {
+      padding: 38px 24px;
+
+      height: clamp(180px, 220px, 90%);
+    }
+
+    @include breakpoint-down("xs") {
+      padding: 30px 24px;
+      height: clamp(180px, 200px, 90%);
+    }
+
+    .modal--open & {
+      @include transform(translateY(0));
+    }
+  }
+
+  &__title {
+    font-size: variables.$font-size-lg;
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1.6;
+    border-bottom: 1px solid var(--color-link);
+
+    @include breakpoint-down("smx") {
+      line-height: 1;
+      font-size: variables.$font-size-md;
+    }
+  }
+
+  &__text {
+    text-align: center;
+    color: var(--color-secondary);
+
+    line-height: 1.2;
+    font-size: variables.$font-size-md;
+    @include breakpoint-down("sm") {
+      line-height: 1;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    @include breakpoint-down("smx") {
+      font-size: 17px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__buttons {
+    @include flexbox;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+  }
+
+  &__button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    @include transition(all 0.3s ease);
+    @include breakpoint-down("sm") {
+      font-size: 18px;
+    }
+
+    @include breakpoint-down("smx") {
+      font-size: 16px;
+      padding: 6px 12px;
+    }
+
+    @include breakpoint-down("xs") {
+      font-size: 14px;
+      padding: 2px 8px;
+    }
+
+    &--cancel {
+      background: var(--background-primary);
+      color: var(--color-primary);
+      border: 1.5px solid var(--border-secondary);
+      @include breakpoint("lg") {
+        &:hover {
+          background: var(--color-primary);
+          color: var(--background-primary);
+        }
+      }
+    }
+
+    &--save {
+      @include breakpoint("lg") {
+        &:hover {
+          background: variables.$gradient-end;
+          color: var(--background-primary);
+        }
+      }
+    }
+
+    &--confirm {
+      background: var(--background-primary);
+      color: var(--color-primary);
+      @include breakpoint("lg") {
+        &:hover {
+          background: variables.$color-danger-hover;
+          color: var(--background-primary);
+        }
+      }
+    }
+  }
+
+  // From _todo-input.module.scss
+  .form__input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-primary);
+    border-radius: 0.5rem;
+    background-color: var(--background-secondary);
+    color: var(--color-primary);
+    @include transition(border-color 0.2s ease-in-out);
+
+    @include breakpoint-down("smx") {
+      padding: 10px 12px;
+      margin: 10px 0;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-link);
+    }
+  }
+}

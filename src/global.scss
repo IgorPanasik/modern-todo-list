@@ -1,0 +1,178 @@
+@use "@/styles/_reset";
+@use "@/styles/_fonts";
+@use "@/styles/_variables" as *;
+@use "@/styles/mixins/_media-queries" as *;
+
+:root {
+  --background-primary: #{$light-background-primary};
+  --background-tertiary: #{$light-background-tertiary};
+  --background-muted: #{$light-background-muted};
+  --color-primary: #{$light-color-primary};
+  --color-link: #{$light-color-link};
+  --color-link-transparent: #{$light-color-link-transparent};
+  --border-primary: #{$light-border-primary};
+  --border-secondary: #{$light-border-secondary};
+  --border-highlight: #{$light-border-highlight};
+  --background-tooltip: #{$light-background-tooltip};
+  --color-tooltip: #{$light-color-tooltip};
+  --skeleton-start-color: #b1b1b1;
+  --skeleton-middle-color: #afafaf;
+  --skeleton-end-color: #eee;
+  --shine-hover: rgba(13, 11, 43, 0.253);
+}
+
+html {
+  font-size: $font-size-md;
+}
+
+body {
+  background-color: var(--background-primary);
+  color: var(--color-primary);
+  line-height: 1.5rem;
+  font-size: inherit;
+  font-weight: 400;
+  font-style: normal;
+
+  &.menu-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+h1 {
+  width: fit-content;
+  background-image: linear-gradient(
+    135deg,
+    $gradient-start 0,
+    $gradient-end 100%
+  );
+  background-size: 100%;
+  -webkit-box-decoration-break: clone;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  box-decoration-break: clone;
+  background-clip: text;
+  font-size: $font-size-h1;
+}
+h2 {
+  font-size: $font-size-h2;
+}
+h3 {
+  font-size: $font-size-h3;
+}
+
+h4 {
+  font-size: $font-size-h4;
+}
+
+button {
+  position: relative;
+  color: var(--color-primary);
+  background-color: var(--background-primary);
+  width: fit-content;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  padding: 10px 30px;
+  border: 1.5px solid var(--border-secondary);
+  box-shadow: 2px 2px 0 0 var(--border-highlight);
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+
+  @include breakpoint("lg") {
+    &::after {
+      content: "";
+      z-index: -1;
+      background-color: var(--shine-hover);
+      position: absolute;
+      top: -172%;
+      bottom: -180%;
+      left: -30px;
+      width: 1.5em;
+      transform: translate3d(-100%, 0, 0) rotate(35deg);
+    }
+
+    &:hover {
+      &::after {
+        transition: transform 0.6s ease-in-out;
+        transform: translate3d(1000%, 0, 0) rotate(35deg);
+      }
+    }
+  }
+
+  &[disabled],
+  &:disabled {
+    border: 1.5px solid var(--border-secondary);
+    cursor: initial;
+    opacity: 0.55;
+    background-color: none;
+
+    &:hover {
+      box-shadow: 2px 2px 0 0 var(--border-highlight);
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 1920px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 20px;
+
+  @include breakpoint-down("smx") {
+    gap: 1rem;
+  }
+}
+
+.main-content {
+  @include breakpoint-down("smx") {
+    gap: 0.7rem;
+  }
+}
+
+.dark-theme {
+  --background-primary: #{$dark-background-primary};
+  --background-tertiary: #{$dark-background-tertiary};
+  --background-muted: #{$dark-background-muted};
+  --color-primary: #{$dark-color-primary};
+  --color-link: #{$dark-color-link};
+  --color-link-transparent: #{$dark-color-link-transparent};
+  --border-primary: #{$dark-border-primary};
+  --border-secondary: #{$dark-border-secondary};
+  --border-highlight: #{$dark-border-highlight};
+  --background-tooltip: #{$dark-background-tooltip};
+  --color-tooltip: #{$dark-color-tooltip};
+  --skeleton-start-color: #303030;
+  --skeleton-middle-color: #404040;
+  --skeleton-end-color: #303030;
+  --shine-hover: rgba(255, 255, 255, 0.2);
+}

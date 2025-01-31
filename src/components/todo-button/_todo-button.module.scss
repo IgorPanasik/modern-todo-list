@@ -1,0 +1,59 @@
+@use "@/styles/_variables";
+@use "@/styles/mixins/_main" as *;
+
+.button-wrapper {
+  @include flexbox;
+  @include flex(1, 1);
+  width: 100%;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  background-color: var(--color-link-transparent);
+  width: 100%;
+  min-width: 0;
+
+  @include breakpoint-down("smx") {
+    padding: 10px 17px;
+  }
+
+  @include breakpoint-down("xs") {
+    font-size: variables.$font-size-xs;
+  }
+
+  &--edit {
+    color: var(--color-primary);
+    background-color: var(--background-muted);
+  }
+
+  &--active {
+    opacity: 0.4;
+    color: var(--color-primary);
+    width: 100%;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover::after {
+      @include transform(none);
+    }
+  }
+
+  &--delete {
+    color: var(--color-primary);
+
+    @include breakpoint("lg") {
+      &:hover {
+        background-color: variables.$color-danger-hover;
+      }
+    }
+
+    @include breakpoint-down("lg") {
+      background-color: variables.$color-danger-hover;
+    }
+  }
+}

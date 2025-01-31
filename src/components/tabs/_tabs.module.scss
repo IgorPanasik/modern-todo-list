@@ -1,0 +1,145 @@
+@use "@/styles/_variables";
+@use "@/styles/mixins/_main" as *;
+
+.tabs {
+  @include flexbox;
+  flex-direction: column;
+  width: 100%;
+
+  &__list {
+    @include flexbox;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__btn {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: var(--color-primary);
+    cursor: pointer;
+    @include transition(all 0.2s ease);
+    font-weight: 500;
+    box-shadow: none;
+
+    @include breakpoint-down("md") {
+      padding: 15px;
+      font-size: variables.$font-size-xs;
+    }
+
+    @include breakpoint-down("smx") {
+      padding: 6px 0;
+      font-size: 15px;
+    }
+
+    @include breakpoint-down("xs") {
+      font-size: 13px;
+    }
+
+    @include breakpoint-down("lg") {
+      padding: 10px 15px;
+    }
+
+    @include breakpoint("lg") {
+      &:hover {
+        color: var(--color-link);
+      }
+    }
+
+    &--active {
+      color: var(--color-link);
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: var(--color-link);
+        animation: slideIn 0.2s ease;
+      }
+    }
+  }
+
+  &__count {
+    margin-left: 0.5rem;
+    opacity: 0.7;
+    font-size: 0.875rem;
+
+    @include breakpoint-down("xs") {
+      margin-left: 2px;
+      font-size: 15px;
+    }
+  }
+
+  &__divider {
+    border: none;
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  // For Skeleton
+  &__list-skeleton {
+    @include flexbox;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__item-skeleton {
+    @include flexbox;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn-skeleton {
+    width: 200px;
+    height: 50px;
+    border-radius: 4px;
+
+    @include breakpoint-down("lg") {
+      width: 150px;
+      height: 32px;
+    }
+
+    @include breakpoint-down("md") {
+      width: 130px;
+      height: 32px;
+    }
+
+    @include breakpoint-down("sm") {
+      width: 100px;
+      height: 28px;
+    }
+
+    @include breakpoint-down("smx") {
+      width: 70px;
+      height: 24px;
+    }
+  }
+
+  &__count-skeleton {
+    width: 30px;
+    height: 32px;
+    margin-left: 0.5rem;
+
+    @include breakpoint-down("md") {
+      width: 20px;
+      height: 19px;
+    }
+
+    @include breakpoint-down("smx") {
+      width: 18px;
+      height: 17px;
+    }
+
+    @include breakpoint-down("xs") {
+      width: 16px;
+      height: 15px;
+      margin-left: 2px;
+    }
+  }
+}

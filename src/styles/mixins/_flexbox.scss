@@ -1,0 +1,24 @@
+// Cross-browser mixins
+@mixin flexbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin inline-flexbox {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+@mixin flex($grow: 0, $shrink: 1, $basis: auto) {
+  -webkit-box-flex: $grow;
+  -webkit-flex: $grow $shrink $basis;
+  -moz-box-flex: $grow;
+  -ms-flex: $grow $shrink $basis;
+  flex: $grow $shrink $basis;
+}

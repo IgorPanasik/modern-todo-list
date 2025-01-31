@@ -1,0 +1,34 @@
+@use "sass:math";
+@use "sass:map";
+
+// Breakpoints
+$breakpoints: (
+  "xs": 360px,
+  "smx": 460px,
+  "sm": 560px,
+  "md": 680px,
+  "lg": 768px,
+  "xl": 1024px,
+  "xxl": 1280px,
+);
+
+// Function for up breakpoints
+@mixin breakpoint($size) {
+  @if map.has-key($breakpoints, $size) {
+    @media screen and (min-width: map.get($breakpoints, $size)) {
+      @content;
+    }
+  } @else {
+    @warn "Undefined breakpoint `#{$size}`";
+  }
+}
+// Function for down breakpoints
+@mixin breakpoint-down($size) {
+  @if map.has-key($breakpoints, $size) {
+    @media screen and (max-width: map.get($breakpoints, $size)) {
+      @content;
+    }
+  } @else {
+    @warn "Undefined breakpoint `#{$size}`";
+  }
+}

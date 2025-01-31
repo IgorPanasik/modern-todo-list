@@ -1,0 +1,68 @@
+{
+  "app": {
+    "name": "TaskMaster",
+    "language": "Change Language",
+    "theme": "Toggle Theme"
+  },
+
+  "links": {
+    "github": "GitHub Profile",
+    "linkedin": "Linkedin Profile",
+    "gmail": "Email",
+    "resume": "Rabota.by"
+  },
+
+  "tasks": {
+    "addTask": "Add Task",
+    "clearAll": "Clear All",
+    "noTasks": "No tasks yet",
+    "completed": "Completed",
+    "open": "Open",
+    "all": "All",
+    "done": "Done",
+    "tooltipDone": "Mark as Done",
+    "delete": "Delete",
+    "tooltipDeleteTask": "Delete Task",
+    "tooltipEdit": "Change Task",
+    "edit": "Edit"
+  },
+
+  "title": {
+    "h1": "Start adding tasks!"
+  },
+
+  "emptyState": {
+    "title": "No tasks yet",
+    "subTitle": "Add your first task using the input above",
+    "noCompletedTasks": "No completed tasks yet"
+  },
+
+  "input": {
+    "placeholder": "What needs to be done?",
+    "button": "Add task",
+    "changeTodo": "Edit Task",
+    "save": "Save Task"
+  },
+
+  "modalEdit": {
+    "title": "Change Task",
+    "cancel": "Cancel",
+    "save": "Save",
+    "tooltipClick": "Click to Edit",
+    "tooltipSave": "Or press Enter",
+    "tooltipCancel": "Or press Esc"
+  },
+
+  "modalConfirmDeleteAll": {
+    "title": "Clear Tasks",
+    "clearTasks": "Are you sure you want to clear all tasks?",
+    "cancel": "Cancel",
+    "confirm": "Clear All",
+    "tooltipClearAll": "Or press Enter",
+    "tooltipCancel": "Or press Esc"
+  },
+
+  "footer": {
+    "createName": "Created by"
+  }
+}

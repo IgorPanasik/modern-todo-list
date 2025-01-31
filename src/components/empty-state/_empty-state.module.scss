@@ -1,0 +1,79 @@
+@use "@/styles/_variables";
+@use "@/styles/mixins/_main" as *;
+
+.empty {
+  @include flexbox;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-primary);
+  opacity: 0.7;
+  gap: 18px;
+
+  @include breakpoint-down("lg") {
+    gap: 10px;
+    padding-top: 0;
+  }
+
+  &.text-pop-up-top {
+    -webkit-animation: text-pop-up-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      both;
+    animation: text-pop-up-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  i {
+    font-size: 3rem;
+    background: linear-gradient(
+      135deg,
+      variables.$gradient-start 0%,
+      variables.$gradient-end 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h4 {
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+
+    @include breakpoint-down("smx") {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  }
+
+  &__icon-skeleton {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+  }
+
+  &__title-skeleton {
+    width: 200px;
+    height: 24px;
+    margin-bottom: 8px;
+  }
+
+  &__text-skeleton {
+    width: 240px;
+    height: 20px;
+  }
+
+  @include breakpoint-down("smx") {
+    &__icon-skeleton {
+      margin-bottom: 12px;
+    }
+
+    &__title-skeleton {
+      margin-bottom: 6px;
+    }
+  }
+}

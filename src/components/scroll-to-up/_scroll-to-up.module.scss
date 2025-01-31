@@ -1,0 +1,42 @@
+@use "@/styles/mixins/_main" as *;
+
+.scrollTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--background-primary);
+  border: 1.5px solid var(--border-secondary);
+  box-shadow: 2px 2px 0 0 var(--border-highlight);
+  opacity: 0;
+  visibility: hidden;
+  @include transition(all 0.3s ease-in-out);
+  z-index: 1000;
+  @include transform(translateY(20px));
+
+  i {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+  }
+
+  @include breakpoint-down("md") {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+
+    i {
+      font-size: 1rem;
+    }
+  }
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    @include transform(translateY(0));
+    z-index: 1000;
+  }
+}

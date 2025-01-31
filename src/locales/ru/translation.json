@@ -1,0 +1,66 @@
+{
+  "app": {
+    "name": "Планировщик",
+    "language": "Сменить Язык",
+    "theme": "Сменить Тему"
+  },
+
+  "links": {
+    "github": "Профиль GitHub",
+    "linkedin": "Профиль Linkedin",
+    "gmail": "Почта",
+    "resume": "Rabota.by"
+  },
+
+  "tasks": {
+    "addTask": "Добавить Задачу",
+    "clearAll": "Очистить Всё",
+    "noTasks": "Нет задач",
+    "completed": "Завершённые Задачи",
+    "open": "Активные Задачи",
+    "all": "Всe Задачи",
+    "done": "Сделано",
+    "tooltipDone": "Пометить как сделано",
+    "delete": "Удалить",
+    "tooltipDeleteTask": "Удалить задачу",
+    "tooltipEdit": "Изменить Задачу",
+    "edit": "Изменить"
+  },
+
+  "title": {
+    "h1": "Начните добавлять задачи!"
+  },
+
+  "emptyState": {
+    "title": "Задач пока нет",
+    "subTitle": "Добавьте свою первую задачу, используя введенные выше данные",
+    "noCompletedTasks": "Выполненных задач пока нет"
+  },
+
+  "input": {
+    "placeholder": "Что нужно сделать?",
+    "button": "Добавить задачу"
+  },
+
+  "modalEdit": {
+    "title": "Изменить Задачу",
+    "cancel": "Отменить",
+    "save": "Сохранить",
+    "tooltipClick": "Кликните, чтобы изменить задачу",
+    "tooltipSave": "Или нажмите клавишу Enter",
+    "tooltipCancel": "Или нажмите клавишу Esc"
+  },
+
+  "modalConfirmDeleteAll": {
+    "title": "Удалить все задачи",
+    "clearTasks": "Вы уверены, что хотите удалить все задачи?",
+    "cancel": "Отмена",
+    "confirm": "Удалить всё!",
+    "tooltipClearAll": "Или нажмите клавишу Enter",
+    "tooltipCancel": "Или нажмите клавишу Esc"
+  },
+
+  "footer": {
+    "createName": "Создано"
+  }
+}

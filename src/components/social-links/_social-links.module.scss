@@ -1,0 +1,134 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins/_main" as *;
+
+.social {
+  @include flexbox;
+  gap: clamp(10px, 2vw, 20px);
+
+  &__item {
+    @include inline-flexbox;
+  }
+
+  &__link {
+    @include inline-flexbox;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-size-lg;
+    color: var(--color-primary);
+    @include transition(all 0.2s ease);
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+
+    @include breakpoint("lg") {
+      &:hover {
+        @include transform(translateY(-2px));
+        &[href*="github"] {
+          color: #635f5f;
+        }
+
+        &[href*="linkedin"] {
+          color: #0077b5;
+        }
+
+        &[href^="mailto:"] {
+          color: #ea4335;
+        }
+
+        &[href*="rabota.by"] {
+          color: #860c01;
+        }
+      }
+    }
+    @include breakpoint("xs") {
+      padding: 5px;
+    }
+
+    @include breakpoint("sm") {
+      padding: 8px;
+    }
+  }
+
+  &--header {
+    @include breakpoint("xs") {
+      justify-content: center;
+      width: 100%;
+    }
+
+    @include breakpoint("sm") {
+      width: auto;
+    }
+
+    @include breakpoint-down("md") {
+      flex-direction: column;
+      gap: 10px;
+
+      .social__item {
+        border-bottom: 1px solid var(--color-link);
+      }
+
+      .social__link {
+        @include flexbox;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+
+        &[href*="github"] {
+          color: #635f5f;
+        }
+
+        &[href*="linkedin"] {
+          color: #0077b5;
+        }
+
+        &[href^="mailto:"] {
+          color: #ea4335;
+        }
+
+        &[href*="rabota.by"] {
+          color: #860c01;
+        }
+
+        span {
+          color: var(--color-primary);
+        }
+      }
+    }
+
+    @include breakpoint-down("xs") {
+      gap: 20px;
+      line-height: 1;
+
+      .social__link {
+        gap: 10px;
+
+        span {
+          line-height: 0;
+        }
+      }
+    }
+
+    .social__link {
+      font-size: $font-size-sm;
+    }
+  }
+
+  &--footer {
+    .social__link {
+      opacity: 0.8;
+      @include transition(all 0.2s ease);
+      @include transform(scale(0.9));
+
+      @include breakpoint-down("lg") {
+        padding: 5px;
+      }
+
+      @include breakpoint("lg") {
+        &:hover {
+          @include transform(scale(1));
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

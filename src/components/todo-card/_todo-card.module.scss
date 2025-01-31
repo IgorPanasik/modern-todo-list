@@ -1,0 +1,210 @@
+@use "@/styles/_variables";
+@use "@/styles/mixins/_main" as *;
+
+.todo {
+  @include flexbox;
+  align-items: center;
+  gap: 10px;
+  border-radius: 0.5rem;
+  background-color: var(--background-primary);
+
+  @include breakpoint-down("lg") {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  & > div {
+    width: 100%;
+  }
+
+  .todoWrapper {
+    position: relative;
+    @include flex(2);
+
+    @include breakpoint-down("lg") {
+      border: 1px solid variables.$dark-color-link;
+    }
+
+    .border_bottom,
+    .border_top,
+    .border_left,
+    .border_right {
+      position: absolute;
+      background-color: var(--color-link);
+      transform-origin: center;
+      @include transition(transform 0.5s ease);
+    }
+
+    .border_bottom,
+    .border_top {
+      height: 1px;
+      left: 0;
+      right: 0;
+      @include transform(scaleX(0));
+    }
+
+    .border_left,
+    .border_right {
+      width: 1px;
+      top: 0;
+      bottom: 0;
+      @include transform(scaleY(0));
+    }
+
+    .border_top {
+      top: 0;
+    }
+
+    .border_bottom {
+      bottom: 0;
+    }
+
+    .border_left {
+      left: 0;
+    }
+
+    .border_right {
+      right: 0;
+    }
+  }
+
+  &__text {
+    position: relative;
+    padding: 10px 10px;
+    color: var(--color-primary);
+    width: 100%;
+    border: 1px solid transparent;
+    @include transition(0.3s border-color ease-in-out);
+    cursor: pointer;
+
+    &:hover ~ .border_top,
+    &:hover ~ .border_bottom {
+      @include transform(scaleX(0));
+    }
+
+    &:hover ~ .border_left,
+    &:hover ~ .border_right {
+      @include transform(scaleY(0));
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #fc2f70;
+      transform-origin: center right;
+      @include transform(scaleX(0) translateY(-50%));
+      @include transition(transform 0.3s ease-out);
+    }
+
+    &--completed {
+      opacity: 0.7;
+      border-color: var(--color-link);
+      border-radius: 0;
+
+      &::before {
+        transform-origin: center left;
+        @include transform(scaleX(1) translateY(-50%));
+        @include transition(transform 0.3s ease-in);
+      }
+    }
+
+    @include breakpoint("lg") {
+      &:hover ~ .border_top,
+      &:hover ~ .border_bottom {
+        @include transform(scaleX(1));
+      }
+
+      &:hover ~ .border_left,
+      &:hover ~ .border_right {
+        @include transform(scaleY(1));
+      }
+    }
+  }
+
+  &__actions {
+    @include flexbox;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    @include flex(1, 1, 33.333%);
+
+    @include breakpoint-down("lg") {
+      width: 100%;
+
+      & > div {
+        @include flexbox;
+        @include flex(1, 1, 33.333%);
+        max-width: 33.333%;
+      }
+    }
+  }
+
+  // For Skeleton
+  &__card-skeleton {
+    @include flexbox;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  &__content-skeleton {
+    @include flexbox;
+    align-items: center;
+
+    & > div {
+      width: 100%;
+    }
+  }
+
+  &__text-skeleton {
+    @include flex(1);
+    width: 100%;
+    height: 58px;
+    border-radius: 4px;
+  }
+
+  &__actions-skeleton {
+    @include flexbox;
+    align-items: center;
+    @include flex(2);
+    gap: 0.5rem;
+
+    @include breakpoint-down("smx") {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  &__btn-skeleton {
+    width: 72px;
+    height: 60px;
+    border-radius: 4px;
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      width: 132px;
+    }
+
+    @include breakpoint-down("smx") {
+      width: 100%;
+      height: 40px;
+
+      &:nth-child(2) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.focus-in-expand {
+  @include add-card-animation;
+}
+
+.blur-out-expand-fwd {
+  @include remove-card-animation;
+}

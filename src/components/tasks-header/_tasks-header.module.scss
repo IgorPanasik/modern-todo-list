@@ -1,0 +1,109 @@
+@use "@/styles/_variables";
+@use "@/styles/mixins/_main" as *;
+
+.tasks {
+  @include flexbox;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  @include breakpoint-down("xs") {
+    gap: 0.5rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+
+    @include breakpoint-down("sm") {
+      font-size: 1.3rem;
+    }
+
+    @include breakpoint-down("smx") {
+      font-size: variables.$font-size-sm;
+    }
+
+    @include breakpoint-down("xs") {
+      font-size: 20px;
+    }
+  }
+
+  &__btn {
+    @include flexbox;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--color-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--color-link-transparent);
+
+    @include breakpoint-down("sm") {
+      padding: 0.6rem 1rem;
+    }
+
+    @include breakpoint-down("xs") {
+      padding: 5px 10px;
+      font-size: 18px;
+    }
+
+    @include breakpoint-down("lg") {
+      padding: 14px 18px;
+    }
+
+    @include breakpoint("lg") {
+      &:hover:not(:disabled) {
+        background-color: variables.$color-danger-hover;
+        color: #eee;
+      }
+    }
+
+    @include breakpoint-down("lg") {
+      &:not(:disabled) {
+        background-color: variables.$color-danger-hover;
+        color: #eee;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      @include transform(none);
+    }
+
+    i {
+      font-size: 1rem;
+      @include breakpoint-down("xs") {
+        font-size: 18px;
+      }
+    }
+  }
+  // For Skeleton
+  &__title-skeleton {
+    width: 300px;
+    height: 24px;
+
+    @include breakpoint-down("xs") {
+      width: 250px;
+    }
+  }
+
+  &__btn-skeleton {
+    width: 200px;
+    height: 60px;
+    border-radius: 0.5rem;
+
+    @include breakpoint-down("sm") {
+      width: 227px;
+      height: 66px;
+    }
+
+    @include breakpoint-down("xs") {
+      width: 157px;
+      height: 48px;
+    }
+  }
+}

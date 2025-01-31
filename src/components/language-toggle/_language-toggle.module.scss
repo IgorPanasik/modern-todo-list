@@ -1,0 +1,136 @@
+@use "@/styles/_variables" as *;
+@use "@/styles/mixins/_main" as *;
+
+.languageToggle {
+  position: relative;
+  z-index: 101;
+
+  &__button {
+    @include inline-flexbox;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    background: var(--background-muted);
+    color: var(--color-primary);
+    cursor: pointer;
+    @include transition(all 0.3s ease);
+    box-shadow: none;
+
+    @include transition(all 0.15s ease-in-out);
+
+    @include breakpoint("lg") {
+      &:hover {
+        border-color: var(--border-highlight);
+      }
+    }
+
+    @include breakpoint-down("lg") {
+      padding: 3px 18px;
+    }
+
+    @include breakpoint-down("sm") {
+      padding: 8px 12px;
+    }
+  }
+
+  &__flag {
+    width: clamp(20px, 2vw, 24px);
+    height: auto;
+    border-radius: 2px;
+    object-fit: cover;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 14px;
+    flex-grow: 1;
+    text-align: left;
+
+    @include breakpoint-down("md") {
+      display: none;
+    }
+
+    @include breakpoint("sm") {
+      display: inline;
+    }
+
+    @include breakpoint("lg") {
+      font-size: $font-size-md;
+    }
+  }
+
+  &__arrow {
+    font-size: 12px;
+    @include transition(transform 0.3s ease);
+
+    &--open {
+      @include transform(rotate(180deg));
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    @include flexbox;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background: var(--background-muted);
+    border: 1.5px solid var(--border-secondary);
+    border-radius: 8px;
+    padding: 4px;
+    z-index: -10;
+    box-shadow: 0 2px 8px #00000026;
+    opacity: 0;
+    visibility: hidden;
+    @include transform(translateY(-40px));
+    @include transition(all 0.3s ease);
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+
+    &--open {
+      opacity: 1;
+      visibility: visible;
+      @include transform(translateY(0));
+      z-index: 10;
+      pointer-events: auto;
+      -webkit-user-select: auto;
+      user-select: auto;
+
+      @include breakpoint-down("xs") {
+        @include transform(translateY(-140px));
+      }
+    }
+  }
+
+  &__option {
+    @include flexbox;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 15px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    color: var(--color-primary);
+    cursor: pointer;
+    border-radius: 4px;
+    @include transition(background-color 0.3s ease);
+    box-shadow: none;
+
+    &:hover {
+      background-color: var(--background-primary);
+      border-color: var(--border-highlight);
+      @include transform(none);
+      box-shadow: none;
+    }
+
+    &--selected {
+      background-color: var(--color-link);
+    }
+  }
+}

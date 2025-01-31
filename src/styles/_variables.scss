@@ -1,0 +1,49 @@
+// Light theme variables
+$light-background-primary: #ebf1f1;
+$light-background-tertiary: #dbeafe;
+$light-background-muted: #e2e1e1;
+$light-color-primary: #030615;
+$light-color-link: #2563eb;
+$light-color-link-transparent: #2564eb2d;
+$light-color-highlight: #fef9c3;
+$light-border-primary: #7da3c9;
+$light-border-secondary: #bed1e7;
+$light-border-highlight: #64748b;
+$light-background-tooltip: #23182b;
+$light-color-tooltip: #fff;
+
+// Dark theme variables
+$dark-background-primary: #05070f;
+$dark-background-secondary: #0e101e;
+$dark-background-tertiary: #121424;
+$dark-background-muted: #1a1e32;
+$dark-color-primary: #f0efef;
+$dark-color-link: #60a5fa;
+$dark-color-link-transparent: #2563eb1a;
+$dark-border-primary: #29325b;
+$dark-border-secondary: #323c71;
+$dark-border-highlight: #4649af;
+$dark-background-tooltip: #221930;
+$dark-color-tooltip: #c4c2c2;
+
+// Common variables that don't change
+$gradient-start: #9580ff;
+$gradient-end: #80ffea;
+$color-danger-hover: #c00202;
+$padding-small: 1rem;
+$padding-large: 2rem;
+$border-radius-small: 0.5rem;
+$border-radius-large: 0.75rem;
+$highlight-border-radius: 0.5rem;
+
+// Heading sizes using type scale (1.2 ratio)
+$font-size-h1: clamp(2rem, 5vw + 1rem, 4rem); // 32-64px
+$font-size-h2: clamp(1.75rem, 4vw + 1rem, 3rem); // 28-48px
+$font-size-h3: clamp(1.5rem, 3vw + 1rem, 2.5rem); // 24-40px
+$font-size-h4: clamp(1.25rem, 2vw + 1rem, 2rem); // 20-32px
+
+// Text sizes
+$font-size-lg: clamp(1.125rem, 1.5vw + 0.5rem, 1.25rem); // 18-20px
+$font-size-md: clamp(24px, 1vw, 20px); // 16-20px
+$font-size-sm: clamp(1rem, 0.5vw + 0.5rem, 1rem); // 14-16px
+$font-size-xs: clamp(0.75rem, 0.5vw + 0.25rem, 0.875rem); // 12-14px
