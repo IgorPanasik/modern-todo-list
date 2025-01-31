@@ -51,11 +51,7 @@ export const buildLoaders = (options: IBuildOptions): webpack.ModuleOptions => {
     exclude: /node_modules/,
     use: {
       loader: "babel-loader",
-      options: {
-        ...createBabelConfig(isDev),
-        cacheDirectory: true,
-        cacheCompression: false,
-      },
+      options: createBabelConfig(isDev),
     },
   };
 
