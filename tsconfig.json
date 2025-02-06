@@ -2,13 +2,13 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
-    "module": "NodeNext",
-    "target": "ESNext",
+    "module": "ESNext",
+    "target": "ES5",
     "jsx": "react-jsx",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
@@ -27,7 +27,7 @@
   ],
   "ts-node": {
     "compilerOptions": {
-      "module": "NodeNext",
+      "module": "CommonJS",
       "moduleResolution": "NodeNext"
     }
   }

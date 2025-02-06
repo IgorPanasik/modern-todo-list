@@ -22,7 +22,6 @@
 
     @include breakpoint("lg") {
       &:hover {
-        @include transform(translateY(-2px));
         &[href*="github"] {
           color: #635f5f;
         }
@@ -59,7 +58,7 @@
       width: auto;
     }
 
-    @include breakpoint-down("md") {
+    @include breakpoint-down("lg") {
       flex-direction: column;
       gap: 10px;
 

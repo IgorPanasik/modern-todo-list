@@ -16,6 +16,16 @@
   box-shadow: none;
   outline: none;
 
+  @include breakpoint-down("xxxl") {
+    padding: 8px 10px;
+    width: 70px;
+  }
+
+  @include breakpoint-down("md") {
+    padding: 10px;
+    width: 70px;
+  }
+
   @include breakpoint("lg") {
     &:hover {
       border-color: var(--border-highlight);
@@ -28,26 +38,6 @@
 
   &:focus-visible {
     box-shadow: 0 0 0 2px var(--border-highlight);
-  }
-
-  @include breakpoint-down("xs") {
-    width: 65px;
-    padding: 6px;
-  }
-
-  @include breakpoint("xs") {
-    width: 65px;
-    padding: 6px;
-  }
-
-  @include breakpoint("sm") {
-    width: 70px;
-    padding: 9px 7px;
-  }
-
-  @include breakpoint("md") {
-    width: 75px;
-    padding: 10px 8px;
   }
 
   &__icons {
@@ -65,14 +55,6 @@
       @include transition(opacity 0.3s ease);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-
-      @include breakpoint("xs") {
-        font-size: 16px;
-      }
-
-      @include breakpoint("md") {
-        font-size: 20px;
-      }
     }
 
     i[class*="fa-sun"] {
@@ -111,18 +93,15 @@
 
     will-change: transform;
 
+    @include breakpoint-down("xxxl") {
+      width: 30px;
+      height: 30px;
+      left: 6px;
+      top: 3px;
+    }
+
     @include breakpoint-down("md") {
-      top: 0;
-      left: 0;
-    }
-
-    @include breakpoint-down("sm") {
-      top: -4px;
-      left: -4px;
-    }
-
-    @include breakpoint-down("xs") {
-      left: 0px;
+      left: 5px;
     }
   }
 

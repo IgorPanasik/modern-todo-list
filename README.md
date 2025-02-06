@@ -10,7 +10,7 @@ All control logic is implemented using the class
 - React
 - TypeScript
 - Webpack 5
-- Babel
+- SWC
 - CSS Modules
 - Sass
 - PostCSS

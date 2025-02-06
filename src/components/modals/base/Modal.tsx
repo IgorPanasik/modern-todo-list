@@ -3,8 +3,8 @@ import * as styles from "@/components/modals/styles/_modal.module.scss";
 import clsx from "clsx";
 import { memo } from "react";
 
-export const Modal = memo(
-  ({ isOpen, onClose, title, children }: IBaseModalProps) => (
+function Modal({ isOpen, onClose, title, children }: IBaseModalProps) {
+  return (
     <div className={clsx(styles.modal, { [styles["modal--open"]]: isOpen })}>
       <div className={styles.modal__overlay} onClick={onClose} />
       <div className={styles.modal__content}>
@@ -12,7 +12,8 @@ export const Modal = memo(
         {children}
       </div>
     </div>
-  )
-);
+  );
+}
 
 Modal.displayName = "Modal";
+export default memo(Modal);

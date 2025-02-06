@@ -2,6 +2,7 @@ export type Todo = {
   id: string;
   input: string;
   complete: boolean;
+  createdAt: string;
 };
 
 export enum ButtonVariant {

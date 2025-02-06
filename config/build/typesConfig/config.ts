@@ -6,17 +6,12 @@ export interface IBuildPaths {
   html: string;
   src: string;
   public: string;
-  favicon: string;
 }
 
 export interface IBuildOptions {
-  mode: BuildMode;
+  port: number;
   paths: IBuildPaths;
-  isDev: boolean;
-  port: number;
-}
-
-export interface IBuildEnv {
   mode: BuildMode;
-  port: number;
+  isDev?: boolean;
+  analyzer?: boolean;
 }

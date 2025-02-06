@@ -70,12 +70,19 @@
 
   &__text {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 10px 10px;
     color: var(--color-primary);
     width: 100%;
     border: 1px solid transparent;
     @include transition(0.3s border-color ease-in-out);
     cursor: pointer;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    min-width: 0;
 
     &:hover ~ .border_top,
     &:hover ~ .border_bottom {
@@ -125,6 +132,17 @@
     }
   }
 
+  &__created {
+    font-size: 14px;
+    margin-bottom: -15px;
+    text-align: right;
+    padding-left: 10px;
+
+    @include breakpoint-down("xl") {
+      font-size: 12px;
+    }
+  }
+
   &__actions {
     @include flexbox;
     align-items: center;
@@ -137,7 +155,7 @@
 
       & > div {
         @include flexbox;
-        @include flex(1, 1, 33.333%);
+        @include flex(1, 1, 22.333%);
         max-width: 33.333%;
       }
     }

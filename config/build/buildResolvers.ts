@@ -1,9 +1,9 @@
-import webpack from "webpack";
+import { Configuration } from "webpack";
 import { IBuildOptions } from "./typesConfig/config";
 
-export const buildResolvers = (
+export function buildResolvers(
   options: IBuildOptions
-): webpack.ResolveOptions => {
+): Configuration["resolve"] {
   return {
     extensions: [".tsx", ".ts", ".js"],
     preferAbsolute: true,
@@ -13,4 +13,4 @@ export const buildResolvers = (
       "@": options.paths.src,
     },
   };
-};
+}

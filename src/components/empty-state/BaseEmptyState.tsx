@@ -8,7 +8,7 @@ interface IEmptyStateProps {
   activeTab: TabType;
 }
 
-export const BaseEmptyState = memo(({ activeTab }: IEmptyStateProps) => {
+const BaseEmptyState = memo(({ activeTab }: IEmptyStateProps) => {
   const { t } = useTranslation();
 
   const emptyStateText = useMemo(() => {
@@ -28,3 +28,4 @@ export const BaseEmptyState = memo(({ activeTab }: IEmptyStateProps) => {
 });
 
 BaseEmptyState.displayName = "BaseEmptyState";
+export default BaseEmptyState;

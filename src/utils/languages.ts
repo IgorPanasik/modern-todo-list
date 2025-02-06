@@ -1,3 +1,6 @@
+import ruFlag from "@/assets/images/flags-svg/ru.svg";
+import usFlag from "@/assets/images/flags-svg/us.svg";
+
 interface ILanguage {
   code: string;
   name: string;
@@ -5,6 +8,6 @@ interface ILanguage {
 }
 
 export const languages: ILanguage[] = [
-  { code: "en", name: "English", flag: "./assets/images/flags-svg/us.svg" },
-  { code: "ru", name: "Русский", flag: "./assets/images/flags-svg/ru.svg" },
+  { code: "en", name: "English", flag: usFlag },
+  { code: "ru", name: "Русский", flag: ruFlag },
 ];

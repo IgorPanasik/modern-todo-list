@@ -1,55 +1,68 @@
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import webpack from "webpack";
+import path from "path";
+import {
+  Configuration,
+  HotModuleReplacementPlugin,
+  ProgressPlugin,
+} from "webpack";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { IBuildOptions } from "./typesConfig/config";
 
-function filterPlugins<T>(plugins: (T | false)[]): T[] {
-  return plugins.filter(Boolean) as T[];
-}
-
-export const buildPlugins = ({
+export function buildPlugins({
+  mode,
   paths,
-  isDev,
-}: IBuildOptions): webpack.WebpackPluginInstance[] => {
-  return filterPlugins(
-    [
-      new HtmlWebpackPlugin({
-        template: paths.html,
-        favicon: paths.favicon,
-      }),
-      new webpack.ProgressPlugin(),
-      new CleanWebpackPlugin(),
+  analyzer,
+}: IBuildOptions): Configuration["plugins"] {
+  const isDev = mode === "development";
+  const isProd = mode === "production";
+
+  const plugins: Configuration["plugins"] = [
+    new HtmlWebpackPlugin({
+      template: paths.html,
+      favicon: path.resolve(paths.public, "favicon.ico"),
+    }),
+    new CleanWebpackPlugin(),
+  ];
+
+  if (isDev) {
+    plugins.push(new HotModuleReplacementPlugin());
+    plugins.push(new ProgressPlugin());
+    plugins.push(new ReactRefreshWebpackPlugin());
+    plugins.push(
+      new ForkTsCheckerWebpackPlugin({
+        async: true,
+      })
+    );
+  }
+
+  if (isProd) {
+    plugins.push(
       new MiniCssExtractPlugin({
         filename: "css/[name].[contenthash:8].css",
         chunkFilename: "css/[name].[contenthash:8].css",
-      }),
+      })
+    );
+
+    plugins.push(
       new CopyPlugin({
         patterns: [
           {
-            from: paths.public,
-            to: paths.output,
-            globOptions: {
-              ignore: [
-                "**/index.html",
-                "**/*.woff",
-                "**/*.woff2",
-                "**/*.eot",
-                "**/*.ttf",
-                "**/*.otf",
-              ],
-            },
+            from: path.resolve(paths.public, "locales"),
+            to: path.resolve(paths.output, "locales"),
           },
         ],
-      }),
-      new webpack.DefinePlugin({
-        __IS_DEV__: JSON.stringify(isDev),
-      }),
+      })
+    );
+  }
 
-      isDev && new webpack.HotModuleReplacementPlugin(),
-      isDev && new ReactRefreshWebpackPlugin(),
-    ].filter(Boolean)
-  );
-};
+  if (analyzer) {
+    plugins.push(new BundleAnalyzerPlugin());
+  }
+
+  return plugins;
+}

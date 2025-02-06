@@ -37,7 +37,12 @@ export class TodoManager implements ITodoManager {
     if (!this.validateTodo(input)) {
       throw new Error("Todo input cannot be empty");
     }
-    const newTodo = { id: v4(), input, complete: false };
+    const newTodo = {
+      id: v4(),
+      input,
+      complete: false,
+      createdAt: new Date().toISOString(),
+    };
     const newTodos = [...this.todos, newTodo];
     this.updateCache();
     this.setTodos(newTodos);

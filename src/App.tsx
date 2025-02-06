@@ -1,11 +1,11 @@
 import { Footer } from "@/components/footer/index";
 import { Header } from "@/components/header/index";
-import { ConfirmDeleteModal } from "@/components/modals/confirm-delete-modal/ConfirmDeleteModal";
-import { ScrollToUp } from "@/components/scroll-to-up/ScrollToUp";
+import { ConfirmDeleteModal } from "@/components/modals/confirm-delete-modal/index";
+import { ScrollToUp } from "@/components/scroll-to-up/index";
 import { Tabs } from "@/components/tabs/index";
 import { TasksHeader } from "@/components/tasks-header/index";
 import { TodoInput } from "@/components/todo-input/index";
-import { TodoList } from "@/components/todo-list/TodoList";
+import { TodoList } from "@/components/todo-list/index";
 import "@/global.scss";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useModal } from "@/hooks/useModal";
@@ -33,8 +33,12 @@ export const App = () => {
             onTabChange={setActiveTab}
             activeTab={activeTab}
           />
-          <TodoInput onAddTodo={(input) => todoManager.addTodo(input)} />
+          <TodoInput
+            onAddTodo={(input: string) => todoManager.addTodo(input)}
+          />
+
           <TodoList todoManager={todoManager} activeTab={activeTab} />
+
           <ScrollToUp />
         </main>
         <Footer />

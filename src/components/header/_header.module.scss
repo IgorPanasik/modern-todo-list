@@ -61,7 +61,7 @@
       flex-wrap: nowrap;
     }
 
-    @include breakpoint-down("md") {
+    @include breakpoint-down("lg") {
       @include flex(0);
       align-items: center;
       justify-content: center;
@@ -120,7 +120,7 @@
       @include transform(none);
     }
 
-    @include breakpoint("md") {
+    @include breakpoint("lg") {
       display: none;
     }
 

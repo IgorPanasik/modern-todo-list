@@ -2,7 +2,7 @@ import * as styles from "@/components/scroll-to-up/_scroll-to-up.module.scss";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
-export const ScrollToUp = () => {
+function ScrollToUp() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -40,4 +40,6 @@ export const ScrollToUp = () => {
       <i className="fas fa-arrow-up" />
     </button>
   );
-};
+}
+
+export default ScrollToUp;

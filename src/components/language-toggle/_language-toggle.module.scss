@@ -16,8 +16,13 @@
     cursor: pointer;
     @include transition(all 0.3s ease);
     box-shadow: none;
-
+    padding: 7px 25px;
+    font-size: 24px;
     @include transition(all 0.15s ease-in-out);
+
+    @include breakpoint-down("xxxl") {
+      padding: 4px 20px;
+    }
 
     @include breakpoint("lg") {
       &:hover {
@@ -35,10 +40,14 @@
   }
 
   &__flag {
-    width: clamp(20px, 2vw, 24px);
     height: auto;
     border-radius: 2px;
     object-fit: cover;
+    width: 20px;
+
+    @include breakpoint-down("xxxl") {
+      width: 18px;
+    }
   }
 
   &__name {
@@ -47,6 +56,10 @@
     flex-grow: 1;
     text-align: left;
 
+    @include breakpoint-down("xxxl") {
+      font-size: 18px;
+    }
+
     @include breakpoint-down("md") {
       display: none;
     }
@@ -54,15 +67,15 @@
     @include breakpoint("sm") {
       display: inline;
     }
-
-    @include breakpoint("lg") {
-      font-size: $font-size-md;
-    }
   }
 
   &__arrow {
     font-size: 12px;
     @include transition(transform 0.3s ease);
+
+    @include breakpoint-down("xxxl") {
+      font-size: 8px;
+    }
 
     &--open {
       @include transform(rotate(180deg));
